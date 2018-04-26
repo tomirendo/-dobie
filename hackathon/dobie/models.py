@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-
+import uuid
 
 class Users(models.Model):
     facebook_id = models.IntegerField(primary_key=True)
@@ -17,11 +17,13 @@ class Users(models.Model):
 
 
 class Orders(models.Model):
-    id = models.IntegerField(primary_key=True)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     publisher = models.ForeignKey(Users, on_delete=models.CASCADE)
     description = models.CharField(max_length=4000)
     category = models.CharField(max_length=200)
-    payment = models.FloatField()
+    payment = models.FloatField(default=0.0)
+    lon = models.FloatField(default=0.0)
+    lat = models.FloatField(default=0.0)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
     done = models.BooleanField(default=False)
@@ -29,7 +31,7 @@ class Orders(models.Model):
         return self.category +" : "+str(self.id)
 
 class Responses(models.Model):
-    id = models.IntegerField(primary_key=True)
+    # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey(Orders, on_delete=models.CASCADE)
     responser = models.ForeignKey(Users, on_delete=models.CASCADE)
     message = models.CharField(max_length=4000)
