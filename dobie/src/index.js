@@ -48,7 +48,8 @@ class TopBar extends React.Component{
 			  <Navbar.Collapse>
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
-			        <LoginView />
+			        <LoginView set_facebook_id={(facebook_id, 
+                                access_token) => this.props.set_facebook_id(facebook_id,access_token)} />
 			      </NavItem>
 			    </Nav>
 			  </Navbar.Collapse>
@@ -62,6 +63,21 @@ class TopBar extends React.Component{
 
 
 class FullSite extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+    set_facebook_id(facebook_id, access_token){
+        state = Object.assign({}, this.state);
+        state.facebook_id = facebook_id;
+        state.access_token = access_token;
+        this.setState(state);
+    }
+    update_form_data(data){
+        state = Object.assign({}, this.state);
+        state.data = data;
+
+    }
 	render(){
 		return (
 			<div>
@@ -70,7 +86,8 @@ class FullSite extends React.Component{
 				<Grid className="container-fluid"> 
 	                
 	                <Row >
-	                	<TopBar />
+	                	<TopBar  set_facebook_id={(facebook_id, 
+                                access_token) => this.set_facebook_id(facebook_id,access_token)}/>
 
 	                </Row>
 	                <Row>
@@ -112,6 +129,8 @@ class LoginView extends React.Component{
     set_facebook_id(resposne){
         this.setState({access_token : this.state.access_token,
                         facebook_id : resposne.data.facebook_id})
+        this.props.set_facebook_id(resposne.data.facebook_id,
+                            this.state.access_token);
     }
     constructor(props) {
         super(props);

@@ -4,6 +4,19 @@ import {InputGroup, FormGroup, FormControl, Label, ListGroupItem, ListGroup, Mod
 import axios from 'axios';
 
 
+const create_order_url = function (access_token, 
+                 description, 
+                 location,
+                 category, 
+                 payment,
+                 facebook_id) {
+      return "http://myapp.com:3000/?description="+description+
+              "&location=" + location + "&category="+category +
+              "&payment="+ payment + "&facebook_id=" + facebook_id +
+              "&access_token=" + access_token;  
+
+
+}
 class Order extends React.Component{
     render() {
         return (
@@ -50,14 +63,11 @@ class OrdersPanel extends React.Component{
               present = array.map(function(subslice) {
                     document.subslice = subslice;
                       if (! subslice[1]){
-                        console.log("here");
-                        return (<Row className='order-row'> <Order data={subslice[0]} /> </Row>)
+                        return (<Row className='order-row'> <Order data={subslice[0]} /> </Row>);
                       } else if (! subslice[2]){
-                        console.log("here 2");
                          return (<Row className='order-row'> <Order data={subslice[0]} />
-                        <Order data={subslice[1]} /></Row>)
+                        <Order data={subslice[1]} /></Row>);
                       } else {
-                        console.log("here 3");
                         return (<Row className='order-row'>
                         <Order data={subslice[0]} />
                         <Order data={subslice[1]} />
@@ -79,25 +89,54 @@ class OrdersPanel extends React.Component{
     }
 }
 class CreateEventView extends React.Component{
+  constructor(props){
+      super(props);
+      this.state = {
+        description  : "",
+        category : "",
+        placeholder : "",
+        payment :"",
+      };
+  }
+    change_description(e){
+      this.state.description = e.target.value;
+    }
+    change_category(e){
+      this.state.category= e.target.value;
+    }
+    change_date (e){
+      this.state.date = e.target.value;
+    }
+    change_payment(e){
+      this.state.payment = e.target.value;
+    }
+    create (){
+      console.log(this.state);
+      this.props.create_function(this.state);
+    }
     render (){
         return (<div className='side-panel'>
                      Post a job
                     <FormGroup> 
                    <FormControl className='form'
                              type="text"
-                             placeholder="description" />
+                             placeholder="description" 
+                             onChange = {(e) => this.change_description(e)}/>
                     <FormControl className='form'
                               type="text"
-                                placeholder="category" />
+                                placeholder="category" 
+                             onChange = {(e) => this.change_category(e)}/>
                      <FormControl  className='form'
                                 type="text"
-                                placeholder="date" />
-                     <FormControl  className='form'
+                                placeholder="date" 
+                             onChange = {(e) => this.change_date(e)}/>
+                     <FormControl className='form'
                                 type="text"
-                                placeholder="payment" />
+                                placeholder="payment" 
+                             onChange = {(e) => this.change_payment(e)}/>
   
                     <div className='create-order-button'>
-                    <Button bsStyle='primary' > Create </Button>
+                    <Button bsStyle='primary' onClick={() => this.create()} > Create </Button>
                     </div>
                     </FormGroup> 
                  </div>
@@ -116,7 +155,7 @@ class OrdersView extends React.Component{
         return (<Grid> 
          <Row>
             <Col xs={3} sm={3}>
-            <CreateEventView />
+            <CreateEventView create_function = {(data) => this.props.create_function(data)}/>
                 </Col>
 
             <Col xs={9} sm={9}>
