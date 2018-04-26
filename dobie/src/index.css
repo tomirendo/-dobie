@@ -13,31 +13,60 @@ Button{
     padding: 4px;
 }
 
-.Charities_cont{
-	min-height: 100px;
-	min-width: 100px;
-	max-height: 100px;
-	max-width: 100px;
+
+
+.user-picture{
+    width : 30px;
+    height: 30px;
 }
-
-.Donors_cont{
-	min-height: 100px;
-	min-width: 100px;
-	max-height: 100px;
-	max-width: 100px;
-}
-
-
 .navbar-default {
     background-image: linear-gradient(to bottom,#fbd3ff 0,#faffa3 100%) !important; /* override background image gradient w/ flat color */
 }
 
-Donors{
-	width: 100%;
-	height: 100%;
+.donor-div{
+	
+	position: relative;
+	background-color: #FBD6D6;
+	display: block;
+	height: 420px;
+	padding: 10px;
+	margin: 10px;
+
+
 
 }
+.fixed_left{
+
+	display:inline-block;
+	position:absolute;
+	top:50%;
+	left:10%;
+	transform:translate(0,-50%);
+	width:50%;
+	background: -webkit-linear-gradient(#ED2028, #fdad4c);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.fixed_right{
+
+	display:inline-block;
+	position:absolute;
+	top:50%;
+	right:-20%;
+	transform:translate(-48%,-50%);
+	width:50%;
+	background: -webkit-linear-gradient(#ED2028, #fdad4c);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 Charities{
 	width: 100%;
 	height: 100%;
+}
+
+.gradient_text {
+ 
+  
 }

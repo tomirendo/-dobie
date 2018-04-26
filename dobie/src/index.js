@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
 import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import axios from 'axios';
 
 
 
@@ -33,8 +34,15 @@ class Hero extends React.Component {
 class Donors extends React.Component {
 	render(){
 	return (
-		<div className="Donors_cont" >
-			<img src="https://i.ytimg.com/vi/iJDQSdx9QfY/maxresdefault.jpg" width="101"></img> ;
+		<div className="container-fluid donor-div" >
+			<div className='fixed_right'>
+				<h3>
+					Variety of services given by Volunteers for your needs.
+				</h3>
+				<h5>
+					volunteers are teenagers with a will to give. their payment will be given to a charity of their choice.
+				</h5>
+			</div>
 		</div>)
 	}
 }
@@ -42,10 +50,33 @@ class Donors extends React.Component {
 class Charities extends React.Component {
 	render(){
 		return(
-			<div className="Charities_cont">
-				<img src="https://i.ytimg.com/vi/iJDQSdx9QfY/maxresdefault.jpg"></img>
+			<div className="container-fluid donor-div" >
+				<div className='fixed_left'>
+					<h3>
+						The most profitable donation.
+					</h3>
+					<h5> 
+						 Do.Bee’s volunteers donate to charity money they earned by doing jobs for users.  
+					</h5>
+				</div>
+			</div>)
+			
+	}
+}
+class Volunteer extends React.Component {
+	render(){
+		return(
+			<div className="container-fluid donor-div">
+				<div className="fixed_left">
+					<h3>
+						Become a volunteer!
+					</h3>
+					<h5>
+						You will decide which one of three organization will get your donation.
+					</h5>
+				</div>
 			</div>
-			)
+		)
 	}
 }
 
@@ -104,10 +135,20 @@ class FullSite extends React.Component{
 	                	<TopBar />
 
 	                </Row>
-	                <Donors />
-	            	
+	                <Row>
+	            		<Charities />
 
-	            	<Charities />
+	            	</Row>
+
+	            	<Row>
+	            		<Donors />
+
+	            	</Row>
+
+	            	<Row>
+	            		<Volunteer />
+
+	            	</Row>
 
 	            </Grid>
 	        </div>
@@ -127,10 +168,14 @@ const move_to_facebook = function(){
     document.location = facebook_login_url;
 }
 
-const get_session_id = function (){
-    var url = new URL(document.location);
-    var session_id = url.searchParams.get("session_id");
-    return session_id;
+const get_access_token = function (){
+    var re = new RegExp('access_token=(.*?)&');
+    var array = re.exec(document.location);
+    if (array){
+        return array[0].slice(13);
+    } else {
+        return "";
+    }
 }
 
 const FacebookLogin= (props) => (
@@ -138,13 +183,20 @@ const FacebookLogin= (props) => (
 );
 
 class LoginView extends React.Component{
+    set_facebook_id(resposne){
+        this.setState({access_token : this.state.access_token,
+                        facebook_id : resposne.data.facebook_id})
+    }
     constructor(props) {
         super(props);
-        this.state = {session_id : get_session_id()};
+        this.state = {access_token: get_access_token()};
+        if(this.state.access_token){
+            axios.get('http://localhost:3000/login/?access_token='+ this.state.access_token).then((res) => this.set_facebook_id(res));
+        }
     }
     render() {
-        if (this.state.session_id){
-            return <div>  </div>;
+        if (this.state.access_token){
+            return <div> <img className='user-picture' src={'http://graph.facebook.com/me/picture?access_token='+this.state.access_token} /></div>;
         } else {
             return <FacebookLogin text={"Login with facebook"} / >
         }
