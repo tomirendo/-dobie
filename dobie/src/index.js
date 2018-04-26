@@ -30,11 +30,11 @@ class Hero extends React.Component {
 
 }
 
-
+const navbar = {backgroundColor: '#F76E10'};
 class TopBar extends React.Component{
 	render(){
 		return(
-			<Navbar inverse collapseOnSelec >
+			<Navbar collapseOnSelec background-color="red">
 			  <Navbar.Header>
 			    <Navbar.Brand>
 			      <a href="#brand">Dobie!</a>
@@ -59,7 +59,7 @@ class TopBar extends React.Component{
 			    </Nav>
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
-			        <Button bsStyle="success"> log in </Button>
+			        <LoginView />
 			      </NavItem>
 			    </Nav>
 			  </Navbar.Collapse>
