@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dobie import views
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls) #,
+    path('admin/', admin.site.urls) ,
+    path('orders/', views.getOrders, name='orders'),
+    path('login/', views.facebookLogin)
     #path(r'', RedirectView.as_view(url='http://myapp.com:3000'))
 ]
 

@@ -54,6 +54,9 @@ class CreateEventView extends React.Component{
                                 type="text"
                                 placeholder="payment" />
   
+                    <div className='create-order-button'>
+                    <Button bsStyle='primary' > Create </Button>
+                    </div>
                     </FormGroup> 
                  </div>
             )
@@ -63,7 +66,6 @@ class CreateEventView extends React.Component{
 const PresentOrders = (props) =>
 (
     <div className='side-panel'> 
-        <Label> Available Orders </Label>
      </div>
 );
 
