@@ -43,10 +43,15 @@ def createOrder(request):
         g = geocoder.google(request.GET['location'])
     except TypeError:
         return HttpResponse("Location is not valid.")
-    # print(request.GET['location'])
-    # print("HERE:"+g.latlng)
+    code = request.GET['access_token']
+    u=None
+    for user in Users.objects.all():
+        if user.access_token == code:
+             u = user
+    if (u==None):
+        return HttpResponse("User is not valid.")
     o1 = Orders(description=request.GET['description'],category=request.GET['category'],payment=request.GET['payment'],
-                lat = g.latlng[0], lon = g.latlng[1], publisher_id="1111111")
+                lat = g.latlng[0], lon = g.latlng[1], publisher_id=u.facebook_id)
     o1.save()
     return HttpResponse()
 
