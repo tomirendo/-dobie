@@ -19,10 +19,8 @@ Button{
     width : 30px;
     height: 30px;
 }
-<<<<<<< HEAD
-.navbar-default {
-    background-image: linear-gradient(to bottom,#fbd3ff 0,#faffa3 100%) !important; /* override background image gradient w/ flat color */
-}
+
+
 
 .donor-div{
 	
@@ -67,19 +65,6 @@ Charities{
 	height: 100%;
 }
 
-.gradient_text {
- 
-  
-=======
-/*.navbar-default {
-    background-image: rgba(0,0,0,0) linear-gradient(to bottom,#fbd3ff 0,) !important;  override background image gradient w/ flat color 
-        background-color: #99ccff;
-    border: 0;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-*/
 .navbar.navbar-default {
     background-image: linear-gradient(to bottom,#ffffff 0,#ffffff 100%) !important; /* override background image gradient w/ flat color */
     border: 0;
@@ -96,5 +81,4 @@ Charities{
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
->>>>>>> 7f902edad4344dc79df6ab351427988baaa4ed84
 }

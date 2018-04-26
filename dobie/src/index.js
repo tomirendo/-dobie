@@ -118,13 +118,13 @@ class FullSite extends React.Component{
         this.state = {};
     }
     set_facebook_id(facebook_id, access_token){
-        state = Object.assign({}, this.state);
+        var state = Object.assign({}, this.state);
         state.facebook_id = facebook_id;
         state.access_token = access_token;
         this.setState(state);
     }
     update_form_data(data){
-        state = Object.assign({}, this.state);
+        var state = Object.assign({}, this.state);
         state.data = data;
 
     }
