@@ -29,6 +29,7 @@ class Hero extends React.Component {
 
 }
 
+
 class TopBar extends React.Component{
 	render(){
 		return(
