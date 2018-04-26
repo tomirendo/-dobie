@@ -44,14 +44,41 @@ def createOrder(request):
     except TypeError:
         return HttpResponse("Location is not valid.")
     code = request.GET['access_token']
-    u=None
-    for user in Users.objects.all():
-        if user.access_token == code:
-             u = user
+    u = get_user_from_code(code)
     if (u==None):
         return HttpResponse("User is not valid.")
     o1 = Orders(description=request.GET['description'],category=request.GET['category'],payment=request.GET['payment'],
                 lat = g.latlng[0], lon = g.latlng[1], publisher_id=u.facebook_id)
     o1.save()
-    return HttpResponse()
+    return HttpResponse("Order created!")
+
+def createResponse(request):
+    code = request.GET['access_token']
+    o_id = request.GET['order_id']
+    o = get_order_from_id(int(o_id))
+    u = get_user_from_code(code)
+    if (u == None):
+        return HttpResponse("User is not valid.")
+    if(o == None):
+        return HttpResponse("Order is not valid.")
+    r1 = Responses(order=o,responder=u,message=request.GET['message'])
+    r1.save()
+    return HttpResponse("Request sent!")
+
+
+def get_user_from_code(code):
+    u=None
+    for user in Users.objects.all():
+        if user.access_token == code:
+             u = user
+    return u
+
+def get_order_from_id(id):
+    o=None
+    for order in Orders.objects.all():
+        print(order.id)
+        if order.id == id:
+             o = order
+    return o
+
 

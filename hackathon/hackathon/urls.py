@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls) ,
     path('orders/', views.getOrders, name='orders'),
     path('neworder/', views.createOrder, name='new order'),
+    path('newresponse/', views.createResponse, name='new response'),
     path('login/', views.facebookLogin)
     #path(r'', RedirectView.as_view(url='http://myapp.com:3000'))
 ]

@@ -33,7 +33,7 @@ class Orders(models.Model):
 class Responses(models.Model):
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey(Orders, on_delete=models.CASCADE)
-    responser = models.ForeignKey(Users, on_delete=models.CASCADE)
+    responder = models.ForeignKey(Users, on_delete=models.CASCADE)
     message = models.CharField(max_length=4000)
     current = models.BooleanField(default=False)  # True iff this is the dude who will make order, False iff response deleted
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
