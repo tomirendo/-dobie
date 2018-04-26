@@ -38,6 +38,14 @@ def getOrders(request):
                           "last change" : order.last_change, "done" : order.done})
     return JsonResponse({'error' : False , 'data' : result})
 
+def getResponses(request):
+    result = []
+    for response in Responses.objects.all():
+        result.append({"id" : response.id, "order id" : response.order.id, "responder id" : response.responder.facebook_id,
+                        "message" : response.message, "current: " : response.current,
+                        "creation: " : response.create_date, "last change" : response.last_change})
+    return JsonResponse({'error' : False , 'data' : result})
+
 def createOrder(request):
     try:
         g = geocoder.google(request.GET['location'])
