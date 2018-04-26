@@ -26,5 +26,10 @@ def write_some_data():
     o6.save()
 
 
-truncate_tables()
-write_some_data()
+def main():
+    truncate_tables()
+    write_some_data()
+
+if __name__ == "__main__":
+    main()
+
