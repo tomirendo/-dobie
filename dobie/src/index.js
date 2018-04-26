@@ -66,7 +66,7 @@ class LoginView extends React.Component{
     }
     render() {
         if (this.state.session_id){
-            return <div> {this.state.session_id} </div>;
+            return <div>  </div>;
         } else {
             return <FacebookLogin text={"Login with facebook"} / >
         }
