@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
 import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import axios from 'axios'
+import axios from 'axios';
 
 
 
@@ -134,7 +134,7 @@ class LoginView extends React.Component{
     }
     render() {
         if (this.state.access_token){
-            return <div> {this.state.facebook_id}</div>;
+            return <div> <img className='user-picture' src={'http://graph.facebook.com/me/picture?access_token='+this.state.access_token} /></div>;
         } else {
             return <FacebookLogin text={"Login with facebook"} / >
         }
