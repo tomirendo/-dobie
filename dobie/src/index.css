@@ -12,3 +12,6 @@ Button{
     padding: 4px;
 }
 
+.navbar-default {
+    background-image: linear-gradient(to bottom,#fbd3ff 0,#faffa3 100%) !important; /* override background image gradient w/ flat color */
+}

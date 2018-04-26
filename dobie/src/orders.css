@@ -13,3 +13,13 @@ Order{
 .single-order{
     background: #F5F9FE;
 }
+FormControl{
+    padding: 2px;
+}
+.create-order-button{
+    width : 50%;
+    padding: 2px;
+    margin: auto;
+    text-align :center;
+    position: relative;
+}
