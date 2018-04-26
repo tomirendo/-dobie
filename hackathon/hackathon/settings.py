@@ -25,12 +25,13 @@ SECRET_KEY = '2r-yd8dh9bjg4304c)pyvpfh!*1b7td8+a9uu3vw*ac^df7tnm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['myapp.com']
+ALLOWED_HOSTS = ['myapp.com', 'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'dobie.apps.DobieConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
