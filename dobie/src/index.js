@@ -7,6 +7,18 @@ import axios from 'axios';
 
 
 
+const create_order_url = function (access_token, 
+                 description, 
+                 location,
+                 category, 
+                 payment,
+                 facebook_id) {
+      return "http://myapp.com:3000/neworder/?description="+description+
+              "&location=" + location + "&category="+category +
+              "&payment="+ payment + "&facebook_id=" + facebook_id +
+              "&access_token=" + access_token;  
+}
+
 class Boots extends React.Component {
   render() {
     return (
@@ -68,14 +80,25 @@ class FullSite extends React.Component{
         this.state = {};
     }
     set_facebook_id(facebook_id, access_token){
-        state = Object.assign({}, this.state);
+        var state = Object.assign({}, this.state);
         state.facebook_id = facebook_id;
         state.access_token = access_token;
         this.setState(state);
     }
-    update_form_data(data){
-        state = Object.assign({}, this.state);
-        state.data = data;
+    create_function(data){
+// const create_order_url = function (access_token, 
+//                  description, 
+//                  location,
+//                  category, 
+//                  payment,
+//                  facebook_id) {
+        var url = create_order_url(this.state.access_token,
+            data.description,
+            data.location,
+            data.category,
+            data.payment,
+            this.state.facebook_id);
+        console.log(url);
 
     }
 	render(){
@@ -91,7 +114,7 @@ class FullSite extends React.Component{
 
 	                </Row>
 	                <Row>
-                    <OrdersView />
+                    <OrdersView create_function={(data) => this.create_function(data)}/>
 	            	</Row>
 	            </Grid>
 	        </div>

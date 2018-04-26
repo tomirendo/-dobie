@@ -4,19 +4,7 @@ import {InputGroup, FormGroup, FormControl, Label, ListGroupItem, ListGroup, Mod
 import axios from 'axios';
 
 
-const create_order_url = function (access_token, 
-                 description, 
-                 location,
-                 category, 
-                 payment,
-                 facebook_id) {
-      return "http://myapp.com:3000/?description="+description+
-              "&location=" + location + "&category="+category +
-              "&payment="+ payment + "&facebook_id=" + facebook_id +
-              "&access_token=" + access_token;  
 
-
-}
 class Order extends React.Component{
     render() {
         return (
@@ -96,6 +84,7 @@ class CreateEventView extends React.Component{
         category : "",
         placeholder : "",
         payment :"",
+        sent : false,
       };
   }
     change_description(e){
@@ -111,10 +100,21 @@ class CreateEventView extends React.Component{
       this.state.payment = e.target.value;
     }
     create (){
-      console.log(this.state);
       this.props.create_function(this.state);
+      this.setState({
+        description  : "",
+        category : "",
+        placeholder : "",
+        payment :"",
+        sent : true,
+      });
     }
     render (){
+      if (this.state.sent){
+        return (<div className='side-panel'> 
+            Order was added!
+        </div>) 
+      } else {
         return (<div className='side-panel'>
                      Post a job
                     <FormGroup> 
@@ -141,9 +141,10 @@ class CreateEventView extends React.Component{
                     </FormGroup> 
                  </div>
             )
-    }
+          }
 
-}
+      }
+      }
 const PresentOrders = (props) =>
 (
     <div className='side-panel'> 
