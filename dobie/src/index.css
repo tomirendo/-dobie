@@ -6,12 +6,38 @@ body {
 .container {
     margin: 0px;
 
+
 }
 Button{
     width : 100%;
     padding: 4px;
 }
 
+.Charities_cont{
+	min-height: 100px;
+	min-width: 100px;
+	max-height: 100px;
+	max-width: 100px;
+}
+
+.Donors_cont{
+	min-height: 100px;
+	min-width: 100px;
+	max-height: 100px;
+	max-width: 100px;
+}
+
+
 .navbar-default {
     background-image: linear-gradient(to bottom,#fbd3ff 0,#faffa3 100%) !important; /* override background image gradient w/ flat color */
+}
+
+Donors{
+	width: 100%;
+	height: 100%;
+
+}
+Charities{
+	width: 100%;
+	height: 100%;
 }

@@ -10,8 +10,8 @@ class Boots extends React.Component {
   render() {
     return (
       <div className="Boots">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossOrigin="anonymous" />  
 
         </div>
     );
@@ -30,19 +30,39 @@ class Hero extends React.Component {
 
 }
 
+class Donors extends React.Component {
+	render(){
+	return (
+		<div className="Donors_cont" >
+			<img src="https://i.ytimg.com/vi/iJDQSdx9QfY/maxresdefault.jpg" width="101"></img> ;
+		</div>)
+	}
+}
+
+class Charities extends React.Component {
+	render(){
+		return(
+			<div className="Charities_cont">
+				<img src="https://i.ytimg.com/vi/iJDQSdx9QfY/maxresdefault.jpg"></img>
+			</div>
+			)
+	}
+}
+
 const navbar = {backgroundColor: '#F76E10'};
 class TopBar extends React.Component{
 	render(){
 		return(
-			<Navbar collapseOnSelec background-color="red">
+			<Navbar background-color="red">
 			  <Navbar.Header>
 			    <Navbar.Brand>
-			      <a href="#brand">Dobie!</a>
+			      <a><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Anthidium_February_2008-1.jpg" width='30' height='30'></img></a>
 			    </Navbar.Brand>
 			    <Navbar.Toggle />
 			  </Navbar.Header>
 			  <Navbar.Collapse>
 			    <Nav>
+
 			      <NavItem eventKey={1} href="#">
 			        Link
 			      </NavItem>
@@ -84,9 +104,11 @@ class FullSite extends React.Component{
 	                	<TopBar />
 
 	                </Row>
-	                <Row>
-                    <OrdersView />
-	            	</Row>
+	                <Donors />
+	            	
+
+	            	<Charities />
+
 	            </Grid>
 	        </div>
 
