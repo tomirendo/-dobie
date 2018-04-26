@@ -39,9 +39,14 @@ def getOrders(request):
     return JsonResponse(dict)
 
 def createOrder(request):
-    # g = geocoder.ip(location)
+    try:
+        g = geocoder.google(request.GET['location'])
+    except TypeError:
+        return HttpResponse("Location is not valid.")
+    # print(request.GET['location'])
+    # print("HERE:"+g.latlng)
     o1 = Orders(description=request.GET['description'],category=request.GET['category'],payment=request.GET['payment'],
-                lat = 0.0, lon = 0.0, publisher_id="1111111")
+                lat = g.latlng[0], lon = g.latlng[1], publisher_id="1111111")
     o1.save()
     return HttpResponse()
 
