@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Grid, Col, Row, Button , ButtonToolbar } from 'react-bootstrap';
+import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+
+
+
 class Boots extends React.Component {
   render() {
     return (
@@ -26,20 +29,70 @@ class Hero extends React.Component {
 
 }
 
+class TopBar extends React.Component{
+	render(){
+		return(
+			<Navbar inverse collapseOnSelec fixedTop>
+			  <Navbar.Header>
+			    <Navbar.Brand>
+			      <a href="#brand">Dobie!</a>
+			    </Navbar.Brand>
+			    <Navbar.Toggle />
+			  </Navbar.Header>
+			  <Navbar.Collapse>
+			    <Nav>
+			      <NavItem eventKey={1} href="#">
+			        Link
+			      </NavItem>
+			      <NavItem eventKey={2} href="#">
+			        Link
+			      </NavItem>
+			      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+			        <MenuItem eventKey={3.1}>Action</MenuItem>
+			        <MenuItem eventKey={3.2}>Another action</MenuItem>
+			        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+			        <MenuItem divider />
+			        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+			      </NavDropdown>
+			    </Nav>
+			    <Nav pullRight>
+			      <NavItem eventKey={2} href="#">
+			        <Button bsStyle="success"> log in </Button>
+			      </NavItem>
+			    </Nav>
+			  </Navbar.Collapse>
+			</Navbar>
+			
+		)	
+	}
+}
+
+	
+
 
 class FullSite extends React.Component{
 	render(){
 		return (
-                <Grid className='container-fluid'> 
-                <Row >
-                </Row>
+			
+			<div>
+				<Boots />			
 
-                <Row> 
+				<Grid className="container-fluid"> 
+	                
+	                <Row >
+	                	<TopBar />
 
-                </Row>
-               </Grid>
+	                </Row>
+	                <Row>
+	                	<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Jolly_green_giant.jpg"></img>
+	            	</Row>
+	            </Grid>
+	        </div>
 
-		)
+
+        )
+
+		
 		
 	}
 }
