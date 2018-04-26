@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
-import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -11,8 +11,10 @@ class Boots extends React.Component {
   render() {
     return (
       <div className="Boots">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossOrigin="anonymous" />  
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />  
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+
 
         </div>
     );
@@ -87,30 +89,17 @@ class TopBar extends React.Component{
 			<Navbar background-color="red">
 			  <Navbar.Header>
 			    <Navbar.Brand>
-			      <a><img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Anthidium_February_2008-1.jpg" width='30' height='30'></img></a>
+			      <a href="#brand">
+                <img className='logo' src={require('./Logo.png')} />
+                </a>
 			    </Navbar.Brand>
-			    <Navbar.Toggle />
 			  </Navbar.Header>
 			  <Navbar.Collapse>
-			    <Nav>
 
-			      <NavItem eventKey={1} href="#">
-			        Link
-			      </NavItem>
-			      <NavItem eventKey={2} href="#">
-			        Link
-			      </NavItem>
-			      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-			        <MenuItem eventKey={3.1}>Action</MenuItem>
-			        <MenuItem eventKey={3.2}>Another action</MenuItem>
-			        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-			        <MenuItem divider />
-			        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-			      </NavDropdown>
-			    </Nav>
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
-			        <LoginView />
+			        <LoginView set_facebook_id={(facebook_id, 
+                                access_token) => this.props.set_facebook_id(facebook_id,access_token)} />
 			      </NavItem>
 			    </Nav>
 			  </Navbar.Collapse>
@@ -124,6 +113,21 @@ class TopBar extends React.Component{
 
 
 class FullSite extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+    set_facebook_id(facebook_id, access_token){
+        state = Object.assign({}, this.state);
+        state.facebook_id = facebook_id;
+        state.access_token = access_token;
+        this.setState(state);
+    }
+    update_form_data(data){
+        state = Object.assign({}, this.state);
+        state.data = data;
+
+    }
 	render(){
 		return (
 			<div>
@@ -132,7 +136,8 @@ class FullSite extends React.Component{
 				<Grid className="container-fluid"> 
 	                
 	                <Row >
-	                	<TopBar />
+	                	<TopBar  set_facebook_id={(facebook_id, 
+                                access_token) => this.set_facebook_id(facebook_id,access_token)}/>
 
 	                </Row>
 	                <Row>
@@ -186,6 +191,8 @@ class LoginView extends React.Component{
     set_facebook_id(resposne){
         this.setState({access_token : this.state.access_token,
                         facebook_id : resposne.data.facebook_id})
+        this.props.set_facebook_id(resposne.data.facebook_id,
+                            this.state.access_token);
     }
     constructor(props) {
         super(props);

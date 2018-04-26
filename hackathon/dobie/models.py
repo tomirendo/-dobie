@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+import geocoder
+
 import uuid
 
 class Users(models.Model):
@@ -12,6 +14,7 @@ class Users(models.Model):
     access_token = models.CharField(max_length=400)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
+
     def __str__(self):
         return self.name
 
@@ -27,17 +30,19 @@ class Orders(models.Model):
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
     done = models.BooleanField(default=False)
+
     def __str__(self):
         return self.category +" : "+str(self.id)
 
 class Responses(models.Model):
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     order = models.ForeignKey(Orders, on_delete=models.CASCADE)
-    responser = models.ForeignKey(Users, on_delete=models.CASCADE)
+    responder = models.ForeignKey(Users, on_delete=models.CASCADE)
     message = models.CharField(max_length=4000)
     current = models.BooleanField(default=False)  # True iff this is the dude who will make order, False iff response deleted
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
+
     def __str__(self):
         return str(self.id)
 

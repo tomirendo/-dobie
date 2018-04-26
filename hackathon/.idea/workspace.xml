@@ -21,24 +21,9 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hackathon/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="1080">
               <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-              <folding>
-                <marker date="1524757853284" expanded="true" signature="905:1062" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="1680:2149" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="1686:2146" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="1823:2139" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="1859:2128" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2202:2276" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2291:2417" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2421:2521" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2551:2945" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2557:2654" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2662:2749" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2757:2845" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2853:2942" ph="..." />
-                <marker date="1524757853284" expanded="true" signature="2949:3024" ph="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,8 +31,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hackathon/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="18" column="45" lean-forward="true" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+            <state relative-caret-position="990">
+              <caret line="27" column="69" lean-forward="false" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
               <folding>
                 <element signature="e#633#665#0" expanded="true" />
               </folding>
@@ -58,8 +43,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dobie/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+            <state relative-caret-position="482">
+              <caret line="114" column="29" lean-forward="true" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -67,8 +52,40 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db.sqlite3" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db.sqlite3">
+      <file leaf-file-name="adding_items.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dobie/adding_items.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="truncate_the_db.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dobie/truncate_the_db.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dobie/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dobie/apps.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -90,42 +107,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dobie/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1240">
-              <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dobie/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding>
-                <element signature="e#22#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="facebookAccess.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hackathon/facebookAccess.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -153,15 +136,20 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>order_i</find>
+    </findStrings>
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/hackathon/facebookAccess.py" />
-        <option value="$PROJECT_DIR$/dobie/adding_items.py" />
         <option value="$PROJECT_DIR$/hackathon/settings.py" />
         <option value="$PROJECT_DIR$/dobie/admin.py" />
         <option value="$PROJECT_DIR$/db.sqlite3" />
+        <option value="$PROJECT_DIR$/dobie/adding_items.py" />
         <option value="$PROJECT_DIR$/dobie/models.py" />
         <option value="$PROJECT_DIR$/dobie/views.py" />
         <option value="$PROJECT_DIR$/hackathon/urls.py" />
@@ -439,22 +427,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="27" column="29" lean-forward="true" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
-          <folding>
-            <marker date="1524757853284" expanded="true" signature="905:1062" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1680:2149" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1686:2146" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1823:2139" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1859:2128" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2202:2276" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2291:2417" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2421:2521" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2551:2945" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2557:2654" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2662:2749" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2757:2845" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2853:2942" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2949:3024" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -507,7 +480,7 @@
         <state relative-caret-position="600">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#22#31#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -524,9 +497,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
           <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -534,22 +505,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1751">
           <caret line="103" column="17" lean-forward="false" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
-          <folding>
-            <marker date="1524757853284" expanded="true" signature="905:1062" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1680:2149" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1686:2146" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1823:2139" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1859:2128" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2202:2276" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2291:2417" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2421:2521" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2551:2945" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2557:2654" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2662:2749" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2757:2845" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2853:2942" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2949:3024" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -577,28 +533,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dobie/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="e#22#31#0" expanded="true" />
+            <element signature="e#22#31#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dobie/adding_items.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="110" />
         </state>
       </provider>
     </entry>
@@ -606,14 +547,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dobie/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -644,43 +577,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dobie/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dobie/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dobie/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="1080">
           <caret line="27" column="29" lean-forward="false" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dobie/adding_items.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <marker date="1524757853284" expanded="true" signature="905:1062" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1680:2149" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1686:2146" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1823:2139" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="1859:2128" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2202:2276" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2291:2417" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2421:2521" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2551:2945" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2557:2654" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2662:2749" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2757:2845" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2853:2942" ph="..." />
-            <marker date="1524757853284" expanded="true" signature="2949:3024" ph="..." />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dobie/truncate_the_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dobie/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1240">
-          <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="34" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dobie/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" column="15" lean-forward="true" selection-start-line="28" selection-start-column="15" selection-end-line="28" selection-end-column="15" />
+        <state relative-caret-position="482">
+          <caret line="114" column="29" lean-forward="true" selection-start-line="114" selection-start-column="29" selection-end-line="114" selection-end-column="29" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
@@ -689,8 +647,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hackathon/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="18" column="45" lean-forward="true" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        <state relative-caret-position="990">
+          <caret line="27" column="69" lean-forward="false" selection-start-line="27" selection-start-column="69" selection-end-line="27" selection-end-column="69" />
           <folding>
             <element signature="e#633#665#0" expanded="true" />
           </folding>
