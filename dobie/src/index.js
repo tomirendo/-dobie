@@ -149,9 +149,6 @@ class FullSite extends React.Component{
             data.payment,
             this.state.facebook_id);
         console.log(url);
-    update_form_data(data){
-        var state = Object.assign({}, this.state);
-        state.data = data;
 
     }
 	render(){
