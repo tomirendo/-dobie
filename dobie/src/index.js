@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Button , ButtonToolbar } from 'react-bootstrap';
+import { Grid, Col, Row, Button , ButtonToolbar } from 'react-bootstrap';
 class Boots extends React.Component {
   render() {
     return (
@@ -30,13 +30,15 @@ class Hero extends React.Component {
 class FullSite extends React.Component{
 	render(){
 		return (
-			<div>
+                <Grid className='container-fluid'> 
+                <Row >
+                </Row>
 
-				<Boots />
-				<Hero />
-				<LoginView />
+                <Row> 
 
-			</div>
+                </Row>
+               </Grid>
+
 		)
 		
 	}
@@ -66,7 +68,7 @@ class LoginView extends React.Component{
     }
     render() {
         if (this.state.session_id){
-            return <div> {this.state.session_id} </div>;
+            return <div>  </div>;
         } else {
             return <FacebookLogin text={"Login with facebook"} / >
         }
