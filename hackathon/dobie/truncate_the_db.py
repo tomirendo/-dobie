@@ -1,4 +1,4 @@
-from .models import Users, Responses, Orders
+from dobie.models import Users, Responses, Orders
 import random
 
 def truncate_tables():
@@ -12,7 +12,7 @@ def choose_random_user():
 def write_some_data():
     o1 = Orders(publisher=choose_random_user(), description="Drive my car from the garage.", category="Driving", payment=25, lon=0, lat=0)
     o1.save()
-    r1 = Responses(order=o1, responder=choose_random_user(), message =  "I'm the best driver ever", current = True)
+    r1 = Responses(order=o1, responder=choose_random_user(), message="I'm the best driver ever", current=True)
     r1.save()
     o2 = Orders(publisher=choose_random_user(), description="I need help with english lessons", category="Education", payment=40, lon=0, lat=0)
     o2.save()
@@ -25,11 +25,9 @@ def write_some_data():
     o6 = Orders(publisher=choose_random_user(), description="Fix my code", category="Other", payment=150, lon=0, lat=0)
     o6.save()
 
-
 def main():
     truncate_tables()
     write_some_data()
 
 if __name__ == "__main__":
     main()
-
