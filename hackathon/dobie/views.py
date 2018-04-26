@@ -5,6 +5,7 @@ import geocoder
 import json
 from facebook_api import facebook_api
 from datetime import datetime
+from django.contrib.gis.geos import Point
 
 # Create your views here.
 
@@ -30,13 +31,17 @@ def facebookLogin(request):
     return HttpResponse(json.dumps({'error' : False, 'facebook_id' : user_info.facebook_id}))
 
 def getOrders(request):
+    result = iterateOrders(Orders.objects.all())
+    return JsonResponse({'error' : False , 'data' : result})
+
+def iterateOrders(orderList):
     result = []
-    for order in Orders.objects.all():
+    for order in orderList:
         result.append({"id" : order.id, "publisher id" : order.publisher.facebook_id,
                           "description" : order.description, "category" : order.category, "payment" : order.payment,
                           "longitude" : order.lon, "latitude" : order.lat, "creation: " : order.create_date,
                           "last change" : order.last_change, "done" : order.done})
-    return JsonResponse({'error' : False , 'data' : result})
+    return result
 
 def getResponses(request):
     result = []
@@ -76,6 +81,11 @@ def createResponse(request):
     r1.save()
     return HttpResponse("Request sent!")
 
+def sortByDate(request):
+    now = datetime.now()
+    unfilled = Orders.objects.filter(done=True).order_by('las_change')
+    result = iterateOrders(unfilled)
+    return JsonResponse({'error': False, 'data': result})
 
 def get_user_from_code(code):
     u=None

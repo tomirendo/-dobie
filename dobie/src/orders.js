@@ -8,14 +8,18 @@ class Order extends React.Component{
     render() {
         return (
             <Col xs={3} sm={3} > 
-            <div className="static-modal">
-                <ListGroup className='single-order'>
-                  <ListGroupItem>
-                      <Image className="order-image" src="https://www.happyceliac.com/wp-content/uploads/2018/02/placeholder-image.png" circle/>
-                  </ListGroupItem>
-                  <ListGroupItem>{this.props.data ? this.props.data.description : ""}</ListGroupItem>
-                </ListGroup>
+
+
+          <div className='order'>
+              <Image className="order-image" src="https://www.happyceliac.com/wp-content/uploads/2018/02/placeholder-image.png" circle/>
+            <div className="order-description">
+                  {this.props.data ? this.props.data.description : ""}
             </div>
+            <div className='order-price'>
+                ${this.props.data.payment} 
+            </div>
+            </div>
+            <div className='buffer'></div>
              </Col>  
             );
     }
@@ -47,14 +51,14 @@ class OrdersPanel extends React.Component{
                     document.subslice = subslice;
                       if (! subslice[1]){
                         console.log("here");
-                        return (<Row> <Order data={subslice[0]} /> </Row>)
+                        return (<Row className='order-row'> <Order data={subslice[0]} /> </Row>)
                       } else if (! subslice[2]){
                         console.log("here 2");
-                         return (<Row> <Order data={subslice[0]} />
+                         return (<Row className='order-row'> <Order data={subslice[0]} />
                         <Order data={subslice[1]} /></Row>)
                       } else {
                         console.log("here 3");
-                        return (<Row >
+                        return (<Row className='order-row'>
                         <Order data={subslice[0]} />
                         <Order data={subslice[1]} />
                         <Order data={subslice[2]} />
@@ -79,16 +83,16 @@ class CreateEventView extends React.Component{
         return (<div className='side-panel'>
                      Post a job
                     <FormGroup> 
-                   <FormControl 
+                   <FormControl className='form'
                              type="text"
                              placeholder="description" />
-                    <FormControl 
+                    <FormControl className='form'
                               type="text"
                                 placeholder="category" />
-                     <FormControl 
+                     <FormControl  className='form'
                                 type="text"
                                 placeholder="date" />
-                     <FormControl 
+                     <FormControl  className='form'
                                 type="text"
                                 placeholder="payment" />
   
