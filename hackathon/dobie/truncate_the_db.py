@@ -6,7 +6,7 @@ def truncate_tables():
     Responses.objects.all().delete()
 
 def choose_random_user():
-    all_users = list(Orders.objects.all())
+    all_users = list(Users.objects.all())
     return random.choice(all_users)
 
 def write_some_data():

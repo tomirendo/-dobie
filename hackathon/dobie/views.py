@@ -63,13 +63,16 @@ def createOrder(request):
 def createResponse(request):
     code = request.GET['access_token']
     o_id = request.GET['order_id']
+
     o = get_order_from_id(int(o_id))
     u = get_user_from_code(code)
+
     if (u == None):
         return HttpResponse("User is not valid.")
     if(o == None):
         return HttpResponse("Order is not valid.")
-    r1 = Responses(order=o,responder=u,message=request.GET['message'])
+
+    r1 = Responses(order=o, responder=u, message=request.GET['message'])
     r1.save()
     return HttpResponse("Request sent!")
 

@@ -20,9 +20,9 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls) ,
-    path('orders/', views.getOrders, name='orders'),
-    path('neworder/', views.createOrder, name='new order'),
-    path('newresponse/', views.createResponse, name='new response'),
+    path('orders/', views.getOrders),
+    path('neworder/', views.createOrder),
+    path('newresponse/', views.createResponse),
     path('login/', views.facebookLogin)
     #path(r'', RedirectView.as_view(url='http://myapp.com:3000'))
 ]
