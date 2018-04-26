@@ -4,8 +4,8 @@ from django.db import models
 from django.db import models
 
 
-class Users(models.model):
-    facebook_id = models.IntegerField()
+class Users(models.Model):
+    facebook_id = models.IntegerField(primary_key=True)
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     name = models.CharField(max_length=400)
@@ -14,21 +14,21 @@ class Users(models.model):
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
 
 
-class Orders(models.model):
-    id = models.IntegerField()
+class Orders(models.Model):
+    id = models.IntegerField(primary_key=True)
     publisher = models.ForeignKey(Users, on_delete=models.CASCADE)
     description = models.CharField(max_length=4000)
+    category = models.CharField(max_length=200)
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
+    done = models.BooleanField(default=False)
 
-
-class Responses(models.model):
-    id = models.IntegerField()
+class Responses(models.Model):
+    id = models.IntegerField(primary_key=True)
     order = models.ForeignKey(Orders, on_delete=models.CASCADE)
     responser = models.ForeignKey(Users, on_delete=models.CASCADE)
     message = models.CharField(max_length=4000)
-    current = models.BooleanField()  # True iff this is the dude who will make order, False iff response deleted
+    current = models.BooleanField(default=False)  # True iff this is the dude who will make order, False iff response deleted
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
 
-#comment
