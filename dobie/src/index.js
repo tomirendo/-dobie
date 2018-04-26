@@ -127,7 +127,7 @@ class TopBar extends React.Component{
 class FullSite extends React.Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {access_token : null};
     }
     set_facebook_id(facebook_id, access_token){
         var state = Object.assign({}, this.state);
@@ -152,6 +152,29 @@ class FullSite extends React.Component{
 
     }
 	render(){
+
+        var main_site;
+        if (this.state.access_token){
+            main_site = <Row> <OrdersView create_function={(data) => this.create_function(data)}/> </Row>;
+        } else {
+            main_site = ( 
+            <div> 
+                <Row>
+
+                        <Charities />
+
+                    </Row>
+
+                    <Row>
+                        <Donors />
+
+                    </Row>
+
+                    <Row>
+                        <Volunteer />
+
+                    </Row> </div>)
+        }
 		return (
 			<div>
 				<Boots />			
@@ -163,21 +186,7 @@ class FullSite extends React.Component{
                                 access_token) => this.set_facebook_id(facebook_id,access_token)}/>
 
 	                </Row>
-	                <Row>
-
-	            		<Charities />
-
-	            	</Row>
-
-	            	<Row>
-	            		<Donors />
-
-	            	</Row>
-
-	            	<Row>
-	            		<Volunteer />
-
-	            	</Row>
+                        {main_site}
 
     	            </Grid>
 	        </div>
@@ -190,7 +199,6 @@ class FullSite extends React.Component{
 	}
 }
 
-    // <OrdersView create_function={(data) => this.create_function(data)}/>
 
 const facebook_login_url = "https://www.facebook.com/v2.12/dialog/oauth?client_id=649758841720130&redirect_uri=http://myapp.com/&response_type=token&state={state-param}";
  
