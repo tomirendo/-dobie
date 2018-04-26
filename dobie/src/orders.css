@@ -1,0 +1,15 @@
+Order{
+    margin : 10px;
+    min-width: 400px;
+    min-height: 400px;
+}
+.order-image{
+    width : 100px;
+    height:  100px;
+}
+.side-panel{
+    background: #F5F9FE;
+}
+.single-order{
+    background: #F5F9FE;
+}
