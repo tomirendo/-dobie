@@ -13,7 +13,7 @@ class Order extends React.Component{
                   <ListGroupItem>
                       <Image className="order-image" src="https://www.happyceliac.com/wp-content/uploads/2018/02/placeholder-image.png" circle/>
                   </ListGroupItem>
-                  <ListGroupItem>{this.props.data.description}</ListGroupItem>
+                  <ListGroupItem>{this.props.data ? this.props.data.description : ""}</ListGroupItem>
                 </ListGroup>
             </div>
              </Col>  
@@ -36,17 +36,31 @@ class OrdersPanel extends React.Component{
         var grid;
         if (this.state.data){
           var copy = this.state.data.slice();
+          document.copy = copy;
           var array = [];
           while (copy.length > 0){
              var subslice = copy.splice(0,3);
              array.push(subslice);
            }
 
-              present = array.map((subslice) => (<Row >
+              present = array.map(function(subslice) {
+                    document.subslice = subslice;
+                      if (! subslice[1]){
+                        console.log("here");
+                        return (<Row> <Order data={subslice[0]} /> </Row>)
+                      } else if (! subslice[2]){
+                        console.log("here 2");
+                         return (<Row> <Order data={subslice[0]} />
+                        <Order data={subslice[1]} /></Row>)
+                      } else {
+                        console.log("here 3");
+                        return (<Row >
                         <Order data={subslice[0]} />
                         <Order data={subslice[1]} />
                         <Order data={subslice[2]} />
-                    </Row>));
+                    </Row>);
+                      }
+              });
               
 
 
