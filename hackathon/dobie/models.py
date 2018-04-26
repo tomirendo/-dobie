@@ -30,3 +30,5 @@ class Responses(models.model):
     current = models.BooleanField()  # True iff this is the dude who will make order, False iff response deleted
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
+
+#comment
