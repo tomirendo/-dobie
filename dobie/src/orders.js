@@ -42,11 +42,23 @@ class OrdersPanel extends React.Component{
              array.push(subslice);
            }
 
-              present = array.map((subslice) => (<Row >
+              present = array.map(function(subslice) {
+                if (subslice.legnth == 1){
+
+                        return (<Row> <Order data={subslice[0]} /> </Row>)
+
+                      } else if (subslice.legnth == 2){
+                         return (<Row> <Order data={subslice[0]} />
+                        <Order data={subslice[1]} /></Row>)
+                        
+                      } else {
+                        return (<Row >
                         <Order data={subslice[0]} />
                         <Order data={subslice[1]} />
                         <Order data={subslice[2]} />
-                    </Row>));
+                    </Row>);
+                      }
+              });
               
 
 
