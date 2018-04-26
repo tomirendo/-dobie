@@ -4,6 +4,8 @@ from dobie.models import Users, Responses, Orders
 import json
 # Create your views here.
 
+def facebookLogin(request):
+    return HttpResponse(str(request.__dict__))
 
 def getOrders(request):
     dict = {}
@@ -16,3 +18,5 @@ def getOrders(request):
 def createUser(request):
     r = request.GET['session_id']
     return HttpResponse(request.GET['session_id'])
+
+
