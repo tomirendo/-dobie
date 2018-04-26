@@ -5,7 +5,7 @@ import geocoder
 import json
 from facebook_api import facebook_api
 from datetime import datetime
-from django.contrib.gis.geos import Point
+from geopy.distance import great_circle
 
 # Create your views here.
 
@@ -79,10 +79,35 @@ def createResponse(request):
     return HttpResponse("Request sent!")
 
 def sortByDate(request):
-    now = datetime.now()
-    unfilled = Orders.objects.filter(done=True).order_by('las_change')
+    try:
+        cat = request.GET['category']
+    except:
+        cat = None
+    if cat == None:
+        unfilled = Orders.objects.filter(done=False).order_by('last_change')
+    else:
+        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by('last_change')
     result = iterateOrders(unfilled)
     return JsonResponse({'error': False, 'data': result})
+
+def sortByLocation(request):
+    try:
+        cat = request.GET['category']
+    except:
+        cat = None
+    if cat == None:
+        unfilled = Orders.objects.filter(done=False)
+        sorted(unfilled,key=distance)
+    else:
+        unfilled = Orders.objects.filter(done=False).filter(category=cat)
+        sorted(unfilled, key=distance)
+    result = iterateOrders(unfilled)
+    return JsonResponse({'error': False, 'data': result})
+
+def distance(order):
+    g = geocoder.google('me')
+    return great_circle((order.lat,order.lon), g.latlng).kilometers
+
 
 def get_user_from_code(code):
     u=None
