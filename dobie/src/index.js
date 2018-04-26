@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
 import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import axios from 'axios'
 
 
 
@@ -105,10 +106,14 @@ const move_to_facebook = function(){
     document.location = facebook_login_url;
 }
 
-const get_session_id = function (){
-    var url = new URL(document.location);
-    var session_id = url.searchParams.get("session_id");
-    return session_id;
+const get_access_token = function (){
+    var re = new RegExp('access_token=(.*?)&');
+    var array = re.exec(document.location);
+    if (array){
+        return array[0].slice(13);
+    } else {
+        return "";
+    }
 }
 
 const FacebookLogin= (props) => (
@@ -116,13 +121,20 @@ const FacebookLogin= (props) => (
 );
 
 class LoginView extends React.Component{
+    set_facebook_id(resposne){
+        this.setState({access_token : this.state.access_token,
+                        facebook_id : resposne.data.facebook_id})
+    }
     constructor(props) {
         super(props);
-        this.state = {session_id : get_session_id()};
+        this.state = {access_token: get_access_token()};
+        if(this.state.access_token){
+            axios.get('http://localhost:3000/login/?access_token='+ this.state.access_token).then((res) => this.set_facebook_id(res));
+        }
     }
     render() {
-        if (this.state.session_id){
-            return <div>  </div>;
+        if (this.state.access_token){
+            return <div> {this.state.facebook_id}</div>;
         } else {
             return <FacebookLogin text={"Login with facebook"} / >
         }

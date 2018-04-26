@@ -26,7 +26,7 @@ def facebookLogin(request):
            create_date = datetime.now(),
            last_change = datetime.now())
     user.save()
-    return HttpResponse(json.dumps({'error' : False}))
+    return HttpResponse(json.dumps({'error' : False, 'facebook_id' : user_info.facebook_id}))
 
 def getOrders(request):
     dict = {}
