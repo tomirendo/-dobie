@@ -16,6 +16,29 @@ Button{
     width : 30px;
     height: 30px;
 }
-.navbar-default {
-    background-image: linear-gradient(to bottom,#fbd3ff 0,#faffa3 100%) !important; /* override background image gradient w/ flat color */
+/*.navbar-default {
+    background-image: rgba(0,0,0,0) linear-gradient(to bottom,#fbd3ff 0,) !important;  override background image gradient w/ flat color 
+        background-color: #99ccff;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+*/
+.navbar.navbar-default {
+    background-image: linear-gradient(to bottom,#ffffff 0,#ffffff 100%) !important; /* override background image gradient w/ flat color */
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
+.logo{
+  height : 250%;
+}
+
+.navbar.navbar-default .navbar-collapse {
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
