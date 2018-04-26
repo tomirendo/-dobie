@@ -45,11 +45,60 @@ class Hero extends React.Component {
 
 }
 
+class Donors extends React.Component {
+	render(){
+	return (
+		<div className="container-fluid donor-div" >
+			<div className='fixed_right'>
+				<h3>
+					Variety of services given by Volunteers for your needs.
+				</h3>
+				<h5>
+					volunteers are teenagers with a will to give. their payment will be given to a charity of their choice.
+				</h5>
+			</div>
+		</div>)
+	}
+}
+
+class Charities extends React.Component {
+	render(){
+		return(
+			<div className="container-fluid donor-div" >
+				<div className='fixed_left'>
+					<h3>
+						The most profitable donation.
+					</h3>
+					<h5> 
+						 Do.Bee’s volunteers donate to charity money they earned by doing jobs for users.  
+					</h5>
+				</div>
+			</div>)
+			
+	}
+}
+class Volunteer extends React.Component {
+	render(){
+		return(
+			<div className="container-fluid donor-div">
+				<div className="fixed_left">
+					<h3>
+						Become a volunteer!
+					</h3>
+					<h5>
+						You will decide which one of three organization will get your donation.
+					</h5>
+				</div>
+			</div>
+		)
+	}
+}
+
 const navbar = {backgroundColor: '#F76E10'};
 class TopBar extends React.Component{
 	render(){
 		return(
-			<Navbar collapseOnSelec background-color="red">
+			<Navbar background-color="red">
 			  <Navbar.Header>
 			    <Navbar.Brand>
 			      <a href="#brand">
@@ -58,6 +107,7 @@ class TopBar extends React.Component{
 			    </Navbar.Brand>
 			  </Navbar.Header>
 			  <Navbar.Collapse>
+
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
 			        <LoginView set_facebook_id={(facebook_id, 
@@ -99,6 +149,9 @@ class FullSite extends React.Component{
             data.payment,
             this.state.facebook_id);
         console.log(url);
+    update_form_data(data){
+        var state = Object.assign({}, this.state);
+        state.data = data;
 
     }
 	render(){
@@ -114,9 +167,22 @@ class FullSite extends React.Component{
 
 	                </Row>
 	                <Row>
-                    <OrdersView create_function={(data) => this.create_function(data)}/>
+
+	            		<Charities />
+
 	            	</Row>
-	            </Grid>
+
+	            	<Row>
+	            		<Donors />
+
+	            	</Row>
+
+	            	<Row>
+	            		<Volunteer />
+
+	            	</Row>
+
+    	            </Grid>
 	        </div>
 
 
@@ -127,6 +193,7 @@ class FullSite extends React.Component{
 	}
 }
 
+    // <OrdersView create_function={(data) => this.create_function(data)}/>
 
 const facebook_login_url = "https://www.facebook.com/v2.12/dialog/oauth?client_id=649758841720130&redirect_uri=http://myapp.com/&response_type=token&state={state-param}";
  

@@ -12,7 +12,7 @@ class Order extends React.Component{
 
 
           <div className='order'>
-              <Image className="order-image" src="https://www.happyceliac.com/wp-content/uploads/2018/02/placeholder-image.png" circle/>
+              <Image className="order-image" src=require('./placeholder-image.png') circle/>
             <div className="order-description">
                   {this.props.data ? this.props.data.description : ""}
             </div>
