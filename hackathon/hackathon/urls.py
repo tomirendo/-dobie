@@ -23,7 +23,8 @@ urlpatterns = [
     path('orders/', views.getOrders, name='orders'),
     path('neworder/', views.createOrder, name='new order'),
     path('newresponse/', views.createResponse, name='new response'),
-    path('login/', views.facebookLogin)
+    path('login/', views.facebookLogin),
+    path('sort/date/', views.sortByDate, name='sort by date')
     #path(r'', RedirectView.as_view(url='http://myapp.com:3000'))
 ]
 
