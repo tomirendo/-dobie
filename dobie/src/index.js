@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
-import { Grid, Col, Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -13,6 +13,8 @@ class Boots extends React.Component {
       <div className="Boots">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />  
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+
 
         </div>
     );
@@ -38,26 +40,12 @@ class TopBar extends React.Component{
 			<Navbar collapseOnSelec background-color="red">
 			  <Navbar.Header>
 			    <Navbar.Brand>
-			      <a href="#brand">Dobie!</a>
+			      <a href="#brand">
+                <img className='logo' src={require('./Logo.png')} />
+                </a>
 			    </Navbar.Brand>
-			    <Navbar.Toggle />
 			  </Navbar.Header>
 			  <Navbar.Collapse>
-			    <Nav>
-			      <NavItem eventKey={1} href="#">
-			        Link
-			      </NavItem>
-			      <NavItem eventKey={2} href="#">
-			        Link
-			      </NavItem>
-			      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-			        <MenuItem eventKey={3.1}>Action</MenuItem>
-			        <MenuItem eventKey={3.2}>Another action</MenuItem>
-			        <MenuItem eventKey={3.3}>Something else here</MenuItem>
-			        <MenuItem divider />
-			        <MenuItem eventKey={3.3}>Separated link</MenuItem>
-			      </NavDropdown>
-			    </Nav>
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
 			        <LoginView />
