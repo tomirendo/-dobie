@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Grid, Col, Row, Button , ButtonToolbar } from 'react-bootstrap';
+import OrdersView from './orders'
 class Boots extends React.Component {
   render() {
     return (
@@ -31,11 +32,12 @@ class FullSite extends React.Component{
 	render(){
 		return (
                 <Grid className='container-fluid'> 
+                <Boots />
                 <Row >
                 </Row>
 
                 <Row> 
-
+                    <OrdersView />
                 </Row>
                </Grid>
 
