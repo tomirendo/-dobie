@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from django.db import models
 import geocoder
+from geopy.distance import great_circle
 
 import uuid
 
@@ -30,7 +31,9 @@ class Orders(models.Model):
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
     done = models.BooleanField(default=False)
-
+    def distance(self):
+        g = geocoder.ip('me')
+        return great_circle((self.lat, self.lon), g.latlng).kilometers
     def __str__(self):
         return self.category +" : "+str(self.id)
 
