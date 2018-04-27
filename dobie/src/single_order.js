@@ -21,11 +21,12 @@ class SingleOrder extends React.Component{
             <div className="static-modal">
   <Modal.Dialog>
     <Modal.Header>
-      <Modal.Title>Modal title</Modal.Title>
+      <Modal.Title> Order </Modal.Title>
     </Modal.Header>
     <Modal.Body>
     Description: {this.props.data.description}<br />
     Category: {this.props.data.house}<br />
+    By {this.props.data['publisher name']}<br />
     </Modal.Body>
 
     <Modal.Body>
