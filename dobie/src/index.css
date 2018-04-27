@@ -8,11 +8,19 @@ body {
 
 
 }
+.search-bar{
+    border: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin : 10px !important;
+    width: 90% !important;
+    border-radius: 0 !important;
+
+}
 Button{
     width : 100%;
     padding: 4px;
 }
-
 
 
 .user-picture{
@@ -20,19 +28,50 @@ Button{
     height: 30px;
 }
 
+.donor-image{
+    height: 200px;
+}
+.donor-image-img{
+    position: relative;
+    top : 60%;
+    transform: translate(0,-50%);
+    height: 70%;
+    width: auto;
 
+}
+.charity-image{
+    right: 0px;
+    height: 200px;
+}
+.charity-image-img{
+    position: relative;
+    top : 65%;
+    left: 66%;
+    transform: translate(0,-50%);
+    height: 120%;
+    width: auto;
+}
 
+.vol-image{
+    right: 0px;
+    height: 200px;
+}
+.vol-image-img{
+    position: relative;
+    top : 65%;
+    left: 64%;
+    transform: translate(0,-50%);
+    height: 110%;
+    width: auto;
+}
 .donor-div{
 	
 	position: relative;
-	background-color: #FBD6D6;
+	background-color: #FFFFFF;
 	display: block;
-	height: 420px;
+	height: 240px;
 	padding: 10px;
 	margin: 10px;
-
-
-
 }
 .fixed_left{
 
@@ -48,7 +87,6 @@ Button{
 }
 
 .fixed_right{
-
 	display:inline-block;
 	position:absolute;
 	top:50%;

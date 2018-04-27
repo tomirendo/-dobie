@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import OrdersView from './orders'
-import { Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { FormControl, Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -57,6 +57,9 @@ class Donors extends React.Component {
 					volunteers are teenagers with a will to give. their payment will be given to a charity of their choice.
 				</h5>
 			</div>
+            <div className='donor-image'>
+                <img className='donor-image-img' src={require('./donator.png')} />
+            </div>
 		</div>)
 	}
 }
@@ -73,6 +76,9 @@ class Charities extends React.Component {
 						 Do.Bee’s volunteers donate to charity money they earned by doing jobs for users.  
 					</h5>
 				</div>
+            <div className='charity-image'>
+                <img className='charity-image-img' src={require('./hero.png')} />
+            </div>
 			</div>)
 			
 	}
@@ -89,6 +95,9 @@ class Volunteer extends React.Component {
 						You will decide which one of three organization will get your donation.
 					</h5>
 				</div>
+        <div className='vol-image'>
+                <img className='vol-image-img' src={require('./vol.png')} />
+            </div>
 			</div>
 		)
 	}
@@ -107,6 +116,15 @@ class TopBar extends React.Component{
 			    </Navbar.Brand>
 			  </Navbar.Header>
 			  <Navbar.Collapse>
+              <Nav>
+              <NavItem >
+                         <FormControl className='search-bar'
+                            type="text"
+                            placeholder="Search"
+                            onChange={(event) => this.props.search(event.target.value)}
+                          />
+              </NavItem>
+              </Nav>
 
 			    <Nav pullRight>
 			      <NavItem eventKey={2} href="#">
@@ -127,7 +145,7 @@ class TopBar extends React.Component{
 class FullSite extends React.Component{
     constructor(props){
         super(props);
-        this.state = {access_token : null};
+        this.state = {access_token : null, search_term : null};
     }
     set_facebook_id(facebook_id, access_token){
         var state = Object.assign({}, this.state);
@@ -151,11 +169,16 @@ class FullSite extends React.Component{
         console.log(url);
 
     }
+    search(search_term){
+        var state = Object.assign({}, this.state);
+        state.search_term = search_term;
+        this.setState(state);
+    }
 	render(){
 
         var main_site;
         if (this.state.access_token){
-            main_site = <Row> <OrdersView create_function={(data) => this.create_function(data)}/> </Row>;
+            main_site = <Row> <OrdersView search_term={this.state.search_term} create_function={(data) => this.create_function(data)}/> </Row>;
         } else {
             main_site = ( 
             <div> 
@@ -182,7 +205,8 @@ class FullSite extends React.Component{
 				<Grid className="container-fluid"> 
 	                
 	                <Row >
-	                	<TopBar  set_facebook_id={(facebook_id, 
+	                	<TopBar  search={(search_term) => this.search(search_term)}
+                        set_facebook_id={(facebook_id, 
                                 access_token) => this.set_facebook_id(facebook_id,access_token)}/>
 
 	                </Row>
