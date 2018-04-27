@@ -31,6 +31,7 @@ class Orders(models.Model):
     create_date = models.DateTimeField(auto_now=False, auto_now_add=True)
     last_change = models.DateTimeField(auto_now=True, auto_now_add=False)
     done = models.BooleanField(default=False)
+    dist = models.FloatField(default=0.0)
     def distance(self):
         g = geocoder.ip('me')
         return great_circle((self.lat, self.lon), g.latlng).kilometers
