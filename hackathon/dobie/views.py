@@ -137,7 +137,7 @@ def searchDescription(request):
     return JsonResponse({'error': False, 'data': result})
 
 def get_user_from_code(code):
-    u=None
+    u = None
     for user in Users.objects.all():
         if user.access_token == code:
              u = user

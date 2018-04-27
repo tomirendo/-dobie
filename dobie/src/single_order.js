@@ -12,6 +12,9 @@ class SingleOrder extends React.Component{
     handle_change_message(event){
         this.setState({message : event.target.value});
     }
+    send_message(){
+        this.props.send_message(this.state.message, this.props.data.id);
+    }
 
     render(){
         return (<div>
@@ -20,7 +23,6 @@ class SingleOrder extends React.Component{
     <Modal.Header>
       <Modal.Title>Modal title</Modal.Title>
     </Modal.Header>
-
     <Modal.Body>
     Description: {this.props.data.description}<br />
     Category: {this.props.data.house}<br />
@@ -31,13 +33,13 @@ class SingleOrder extends React.Component{
     <InputGroup>
       <FormControl  onChange={(e) => this.handle_change_message(e)} type="text" placeholder='Message' />
       <InputGroup.Button>
-        <Button bsStyle='primary'>Send!</Button>
+        <Button bsStyle='primary' onClick={() => this.send_message()}>Send!</Button>
       </InputGroup.Button>
     </InputGroup>
   </FormGroup>
     </Modal.Body>
     <Modal.Footer>
-      <Button bsStyle="success" onClick={() => this.props.close_modal()}>Close</Button>
+      <Button  onClick={() => this.props.close_modal()}>Close</Button>
     </Modal.Footer>
   </Modal.Dialog>
 </div> 
