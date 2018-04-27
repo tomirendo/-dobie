@@ -39,7 +39,7 @@ class SingleOrder extends React.Component{
   </FormGroup>
     </Modal.Body>
     <Modal.Footer>
-      <Button bsStyle="success" onClick={() => this.props.close_modal()}>Close</Button>
+      <Button  onClick={() => this.props.close_modal()}>Close</Button>
     </Modal.Footer>
   </Modal.Dialog>
 </div> 

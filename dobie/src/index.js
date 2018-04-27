@@ -167,8 +167,7 @@ class FullSite extends React.Component{
             data.category,
             data.payment,
             this.state.facebook_id);
-        console.log(url);
-
+        axios.get(url).then(() => alert("Created!"))
     }
     search(search_term){
         var state = Object.assign({}, this.state);
