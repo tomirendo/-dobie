@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
 from dobie.models import Users, Responses, Orders
+from django.db.models import F, FloatField, ExpressionWrapper
 import geocoder
 import json
 from facebook_api import facebook_api
@@ -89,27 +90,28 @@ def sortByDate(request):
     if cat == None:
         unfilled = Orders.objects.filter(done=False).order_by('last_change')
     else:
-        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by('last_change')
+        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by('-last_change')
     result = iterateOrders(unfilled)
     return JsonResponse({'error': False, 'data': result})
 
 def sortByLocation(request):
+    # def distance(order):
+    #     g = geocoder.ip('me')
+    #     return great_circle((order.lat, order.lon), g.latlng).kilometers
     try:
         cat = request.GET['category']
     except:
         cat = None
     if cat == None:
-        unfilled = Orders.objects.filter(done=False)
-        sorted(unfilled,key=distance)
+        unfilled = Orders.objects.filter(done=False).order_by(Orders.distance)
     else:
-        unfilled = Orders.objects.filter(done=False).filter(category=cat)
-        sorted(unfilled, key=distance)
+        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by(Orders.distance)
     result = iterateOrders(unfilled)
     return JsonResponse({'error': False, 'data': result})
 
-def distance(order):
-    g = geocoder.google('me')
-    return great_circle((order.lat,order.lon), g.latlng).kilometers
+def testing(request):
+    temp = great_circle((F('lat'), F('lon')), geocoder.ip('me').latlng)
+    return HttpResponse(str(temp))
 
 
 def get_user_from_code(code):
