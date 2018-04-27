@@ -27,7 +27,7 @@ urlpatterns = [
     path('login/', views.facebookLogin),
     path('sort/date/', views.sortByDate, name='sort by date'),
     path('sort/location/', views.sortByLocation, name='sort by location'),
-    path('testing/', views.testing)
+    # path('testing/', views.testing)
     #path(r'', RedirectView.as_view(url='http://myapp.com:3000'))
 ]
 

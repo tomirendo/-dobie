@@ -38,10 +38,17 @@ def getOrders(request):
 def iterateOrders(orderList):
     result = []
     for order in orderList:
-        result.append({"id" : order.id, "publisher id" : order.publisher.facebook_id,
-                          "description" : order.description, "category" : order.category, "payment" : order.payment,
-                          "longitude" : order.lon, "latitude" : order.lat, "creation: " : order.create_date,
-                          "last change" : order.last_change, "done" : order.done})
+        result.append({"id" : order.id,
+                       "publisher id" : order.publisher.facebook_id,
+                       "publisher name" : order.publisher.name,
+                        "description" : order.description,
+                       "category" : order.category,
+                       "payment" : order.payment,
+                        "longitude" : order.lon,
+                       "latitude" : order.lat,
+                       "creation: " : order.create_date,
+                          "last change" : order.last_change,
+                       "done" : order.done})
     return result
 
 def getResponses(request):
@@ -114,9 +121,9 @@ def sortByLocation(request):
     result = iterateOrders(unfilled)
     return JsonResponse({'error': False, 'data': result})
 
-def testing(request):
-    temp = great_circle((F('lat'), F('lon')), geocoder.ip('me').latlng)
-    return HttpResponse(str(temp))
+# def testing(request):
+#     temp = great_circle((F('lat'), F('lon')), geocoder.ip('me').latlng)
+#     return HttpResponse(str(temp))
 
 
 def get_user_from_code(code):
