@@ -6,12 +6,16 @@ import axios from 'axios';
 
 
 class Order extends React.Component{
+  constructor(props){
+    super(props);
+    var self =this;
+  }
     render() {
         return (
             <Col xs={3} sm={3} > 
 
 
-          <div className='order'>
+          <div className='order' onClick={() => this.props.show_modal(this.props.data)}>
               <Image className="order-image" src={require('./placeholder-image.png')} circle/>
             <div className="order-description">
                   {this.props.data ? this.props.data.description : ""}
@@ -29,16 +33,21 @@ class OrdersPanel extends React.Component{
   constructor(props){
     super(props);
     this.state = {data : null};
+    document.self = this;
     axios.get('http://myapp.com:3000/orders/').then( (res) => this.get_data(res));
   }
     get_data (resposne){
       document.data = resposne.data.data;
       this.setState({data : resposne.data.data});
     }
+    show_modal(data){
+      this.props.show_modal(data);
+    }
 
     render(){
         var present = ""
         var grid;
+        var me = document.self;
         if (this.state.data){
           var copy = this.state.data.slice();
           document.copy = copy;
@@ -51,15 +60,15 @@ class OrdersPanel extends React.Component{
               present = array.map(function(subslice) {
                     document.subslice = subslice;
                       if (! subslice[1]){
-                        return (<Row className='order-row'> <Order data={subslice[0]} /> </Row>);
+                        return (<Row className='order-row'> <Order show_modal = {(data) => me.show_modal(data)} data={subslice[0]} /> </Row>);
                       } else if (! subslice[2]){
-                         return (<Row className='order-row'> <Order data={subslice[0]} />
-                        <Order data={subslice[1]} /></Row>);
+                         return (<Row className='order-row'> <Order show_modal = {(data) => me.show_modal(data)} data={subslice[0]} />
+                        <Order show_modal={(data) => me.show_modal(data)} data={subslice[1]} /></Row>);
                       } else {
                         return (<Row className='order-row'>
-                        <Order data={subslice[0]} />
-                        <Order data={subslice[1]} />
-                        <Order data={subslice[2]} />
+                        <Order show_modal = {(data) => me.show_modal(data)} data={subslice[0]} />
+                        <Order show_modal = {(data) => me.show_modal(data)} data={subslice[1]} />
+                        <Order show_modal = {(data) => me.show_modal(data)} data={subslice[2]} />
                     </Row>);
                       }
               });
@@ -152,11 +161,15 @@ const PresentOrders = (props) =>
 );
 
 class OrdersView extends React.Component{
+    constructor(props){
+      super(props);
+    }
     render(){
         return (<Grid> 
          <Row>
             <Col xs={3} sm={3}>
-            <CreateEventView create_function = {(data) => this.props.create_function(data)}/>
+            <CreateEventView create_function = {(data) => this.props.create_function(data)}
+                              />
                 </Col>
 
             <Col xs={9} sm={9}>
@@ -165,7 +178,7 @@ class OrdersView extends React.Component{
                 <PresentOrders />
                 </Row>
                 <Row>
-                <OrdersPanel />
+                <OrdersPanel show_modal = {(data) => this.props.show_modal(data)}  />
                 </Row>
             </Grid>
 
