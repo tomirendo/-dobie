@@ -95,17 +95,22 @@ def sortByDate(request):
     return JsonResponse({'error': False, 'data': result})
 
 def sortByLocation(request):
-    # def distance(order):
-    #     g = geocoder.ip('me')
-    #     return great_circle((order.lat, order.lon), g.latlng).kilometers
+    def distance(order):
+        g = geocoder.ip('me')
+        return great_circle((order.lat, order.lon), g.latlng).kilometers
     try:
         cat = request.GET['category']
     except:
         cat = None
+    # g = geocoder.ip('me').latlng
+    for order in Orders.objects.filter(done=False):
+        order.dist = distance(order)
+        order.save()
     if cat == None:
-        unfilled = Orders.objects.filter(done=False).order_by(Orders.distance)
+        unfilled = Orders.objects.filter(done=False).order_by('dist', '-last_change')
     else:
-        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by(Orders.distance)
+        unfilled = Orders.objects.filter(done=False).filter(category=cat).order_by('dist', '-last_change')
+        # sorted(unfilled,key=distance)
     result = iterateOrders(unfilled)
     return JsonResponse({'error': False, 'data': result})
 
