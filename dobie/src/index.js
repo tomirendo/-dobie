@@ -9,8 +9,8 @@ import axios from 'axios';
 
 const create_response_url = function(access_token, 
                 order_id, message){
-    return "http://myapp.com:3000/newresponse/?access_token="+access_token+
-             "&order_id="+order_id+"&message="+message;
+    return "http://myapp.com:3000/newresponse/?"+
+             "order_id="+order_id+"&message="+message + "&access_token="+access_token;
 
 }
 
@@ -188,6 +188,13 @@ class FullSite extends React.Component{
      state.show_modal = false;
      this.setState(state);
      }
+     send_message(message, order_id){
+        const url = create_response_url(this.state.access_token,
+                            order_id, message);
+        axios.get(url).then((res) => console.log(res));
+        this.close_modal();
+        alert('Response Sent!');
+     }
 	render(){
 
         var main_site;
@@ -214,7 +221,8 @@ class FullSite extends React.Component{
                     </Row> </div>)
         }
         const single_order = this.state.show_modal ? <SingleOrder data={this.state.modal_data} 
-                                                                close_modal={() => this.close_modal()} />  : "";
+                                                                close_modal={() => this.close_modal()}
+                                                                send_message={(message, order_id) => this.send_message(message, order_id)} />  : "";
 
 		return (
 			<div>
