@@ -7,6 +7,14 @@ Order{
 .order-row{
     margin : 20px !important;
 }
+.message-panel{
+
+}
+.message-item{
+    text-align: left;
+    position: relative;
+    left : 0px;
+}
 .order-description{
     font-family: Open Sans;
     position: absolute;

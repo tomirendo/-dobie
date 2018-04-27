@@ -16,7 +16,7 @@ class Order extends React.Component{
 
 
           <div className='order' onClick={() => this.props.show_modal(this.props.data)}>
-              <Image className="order-image" src={require('./placeholder-image.png')} circle/>
+              <Image className="order-image" src={require('./'+this.props.data.category+'.png')} circle/>
             <div className="order-description">
                   {this.props.data ? this.props.data.description : ""}
             </div>
@@ -160,6 +160,25 @@ const PresentOrders = (props) =>
      </div>
 );
 
+class ResponsesView extends React.Component{
+  render (){
+    console.log(this.props.responses);
+      var list = this.props.responses.map(function(res) {
+          return (<div className='message-item'>   New : <Label> {res.message} </Label> </div>);
+      })
+      return (
+                <div className='side-panel message-panel'>
+                  <ul>
+                  {list}
+                  </ul>
+
+
+                </div>)
+
+  }
+
+}
+
 class OrdersView extends React.Component{
     constructor(props){
       super(props);
@@ -168,8 +187,12 @@ class OrdersView extends React.Component{
         return (<Grid> 
          <Row>
             <Col xs={3} sm={3}>
-            <CreateEventView create_function = {(data) => this.props.create_function(data)}
-                              />
+            <Row> 
+            <CreateEventView create_function = {(data) => this.props.create_function(data)} />
+                              </Row>
+                              <Row>
+                  <ResponsesView responses={this.props.responses} />
+                              </Row>
                 </Col>
 
             <Col xs={9} sm={9}>

@@ -7,6 +7,9 @@ import { FormControl, Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, 
 import axios from 'axios';
 
 
+const get_responses_url = function(access_token){
+    return "http://localhost:3000/responses/?access_token=" + access_token
+}
 const create_response_url = function(access_token, 
                 order_id, message){
     return "http://myapp.com:3000/newresponse/?"+
@@ -152,12 +155,19 @@ class TopBar extends React.Component{
 class FullSite extends React.Component{
     constructor(props){
         super(props);
-        this.state = {access_token : null, search_term : null, show_modal : false, modal_data:null};
+        this.state = {access_token : null, search_term : null, show_modal : false, modal_data:null,
+            responses : []};
     }
     set_facebook_id(facebook_id, access_token){
         var state = Object.assign({}, this.state);
         state.facebook_id = facebook_id;
         state.access_token = access_token;
+        axios.get(get_responses_url(access_token)).then( (res) => this.got_responses(res));
+        this.setState(state);
+    }
+    got_responses(res){
+        var state = Object.assign({}, this.state);
+        state.responses = res.data.data;
         this.setState(state);
     }
     create_function(data){
@@ -199,7 +209,8 @@ class FullSite extends React.Component{
         var main_site;
         if (this.state.access_token){
             main_site = <Row> <OrdersView show_modal={(data) => this.show_modal(data)}
-            search_term={this.state.search_term} create_function={(data) => this.create_function(data)} /> </Row>;
+            search_term={this.state.search_term} create_function={(data) => this.create_function(data)} 
+            responses={this.state.responses}/> </Row>;
         } else {
             main_site = ( 
             <div> 
