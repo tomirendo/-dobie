@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import SingleOrder from './single_order'
 import OrdersView from './orders'
 import { FormControl, Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
 
 
+const create_response_url = function(access_token, 
+                order_id, message){
+    return "http://myapp.com:3000/newresponse/?access_token="+access_token+
+             "&order_id="+order_id+"&message="+message;
+
+}
 
 const create_order_url = function (access_token, 
                  description, 
@@ -145,7 +152,7 @@ class TopBar extends React.Component{
 class FullSite extends React.Component{
     constructor(props){
         super(props);
-        this.state = {access_token : null, search_term : null};
+        this.state = {access_token : null, search_term : null, show_modal : false, modal_data:null};
     }
     set_facebook_id(facebook_id, access_token){
         var state = Object.assign({}, this.state);
@@ -154,12 +161,6 @@ class FullSite extends React.Component{
         this.setState(state);
     }
     create_function(data){
-// const create_order_url = function (access_token, 
-//                  description, 
-//                  location,
-//                  category, 
-//                  payment,
-//                  facebook_id) {
         var url = create_order_url(this.state.access_token,
             data.description,
             data.location,
@@ -174,11 +175,25 @@ class FullSite extends React.Component{
         state.search_term = search_term;
         this.setState(state);
     }
+    show_modal(data){
+        var state = Object.assign({}, this.state);
+        state.show_modal = true;
+        state.modal_data = data;
+        console.log(data);
+        this.setState(state);
+
+    }
+    close_modal(){
+     var state = Object.assign({}, this.state);
+     state.show_modal = false;
+     this.setState(state);
+     }
 	render(){
 
         var main_site;
         if (this.state.access_token){
-            main_site = <Row> <OrdersView search_term={this.state.search_term} create_function={(data) => this.create_function(data)}/> </Row>;
+            main_site = <Row> <OrdersView show_modal={(data) => this.show_modal(data)}
+            search_term={this.state.search_term} create_function={(data) => this.create_function(data)} /> </Row>;
         } else {
             main_site = ( 
             <div> 
@@ -198,6 +213,9 @@ class FullSite extends React.Component{
 
                     </Row> </div>)
         }
+        const single_order = this.state.show_modal ? <SingleOrder data={this.state.modal_data} 
+                                                                close_modal={() => this.close_modal()} />  : "";
+
 		return (
 			<div>
 				<Boots />			
@@ -213,6 +231,7 @@ class FullSite extends React.Component{
                         {main_site}
 
     	            </Grid>
+                    {single_order}
 	        </div>
 
 
