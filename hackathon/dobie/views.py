@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, JsonResponse
 from dobie.models import Users, Responses, Orders
-from django.db.models import F, FloatField, ExpressionWrapper
+from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 import geocoder
 import json
 from facebook_api import facebook_api
@@ -47,14 +47,17 @@ def iterateOrders(orderList):
                         "longitude" : order.lon,
                        "latitude" : order.lat,
                        "creation: " : order.create_date,
-                          "last change" : order.last_change,
+                        "last change" : order.last_change,
                        "done" : order.done})
     return result
 
 def getResponses(request):
+    token = request.GET['access_token']
+    user = get_user_from_code(token)
     result = []
     for response in Responses.objects.all():
-        result.append({"id" : response.id, "order id" : response.order.id, "responder id" : response.responder.facebook_id,
+        if response.order.publisher_id == user.facebook_id:
+            result.append({"id" : response.id, "order id" : response.order.id, "responder id" : response.responder.facebook_id,
                         "message" : response.message, "current: " : response.current,
                         "creation: " : response.create_date, "last change" : response.last_change})
     return JsonResponse({'error' : False , 'data' : result})
@@ -125,6 +128,13 @@ def sortByLocation(request):
 #     temp = great_circle((F('lat'), F('lon')), geocoder.ip('me').latlng)
 #     return HttpResponse(str(temp))
 
+def searchDescription(request):
+    query = request.GET['search']
+    vector = SearchVector(query)
+    query = SearchQuery(query)
+    orderList = Orders.objects.annotate(rank=SearchRank(vector, query)).order_by('-rank')
+    result = iterateOrders(orderList)
+    return JsonResponse({'error': False, 'data': result})
 
 def get_user_from_code(code):
     u = None
