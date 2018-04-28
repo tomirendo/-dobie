@@ -5,7 +5,7 @@ import SingleOrder from './single_order'
 import OrdersView from './orders'
 import { FormControl, Grid, Col, Image,Row, Button, ButtonToolbar, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import axios from 'axios';
-
+import Favicon from 'react-favicon';
 
 const get_responses_url = function(access_token){
     return "http://localhost:3000/responses/?access_token=" + access_token
@@ -36,6 +36,7 @@ class Boots extends React.Component {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />  
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" />
+            <Favicon url={require('./favicon.ico')} />
 
 
         </div>
@@ -144,7 +145,7 @@ class TopBar extends React.Component{
 			    </Nav>
 			  </Navbar.Collapse>
 			</Navbar>
-			
+
 		)	
 	}
 }
@@ -250,6 +251,7 @@ class FullSite extends React.Component{
 
     	            </Grid>
                     {single_order}
+
 	        </div>
 
 

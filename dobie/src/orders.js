@@ -1,6 +1,6 @@
 import React from 'react';
 import './orders.css';
-import {InputGroup, FormGroup, FormControl, Label, ListGroupItem, ListGroup, Modal, Grid, Col, Row, Image, Button , ButtonToolbar } from 'react-bootstrap';
+import {InputGroup,DropdownButton,MenuItem, ControlLabel,FormGroup, FormControl, Label, ListGroupItem, ListGroup, Modal, Grid, Col, Row, Image, Button , ButtonToolbar } from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -18,7 +18,7 @@ class Order extends React.Component{
           <div className='order' onClick={() => this.props.show_modal(this.props.data)}>
               <Image className="order-image" src={require('./'+this.props.data.category+'.png')} circle/>
             <div className="order-description">
-                  {this.props.data ? this.props.data.description : ""}
+                  {this.props.data ? this.props.data.category: ""}
             </div>
             <div className='order-price'>
                 ${this.props.data.payment} 
@@ -143,7 +143,25 @@ class CreateEventView extends React.Component{
                                 type="text"
                                 placeholder="payment" 
                              onChange = {(e) => this.change_payment(e)}/>
-  
+
+                                 <InputGroup>
+                                    <DropdownButton className='form'
+                                      componentClass={InputGroup.Button}
+                                      id="input-dropdown-addon"
+                                      title="Charity"
+                                    >
+                                      <MenuItem key="1" className='form'>
+                                      <Image className='charity-icon' src={require('./schistosomaisis.png')} />
+                                      The Schistosomiasis Control Initiative</MenuItem>
+                                      <MenuItem key="2" className='form'>
+                                      <Image className='charity-icon' src={require('./malaria.png')} />
+                                      Against Malaria Foundation</MenuItem>
+                                      <MenuItem key="3" className='form'>
+                                      <Image className='charity-icon' src={require('./leage.png')} />
+                                      The Humane Leage</MenuItem>
+                                    </DropdownButton>
+                                  </InputGroup>
+                     
                     <div className='create-order-button'>
                     <Button bsStyle='primary' onClick={() => this.create()} > Create </Button>
                     </div>
