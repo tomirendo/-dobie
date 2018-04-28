@@ -129,9 +129,9 @@ def sortByLocation(request):
 #     return HttpResponse(str(temp))
 
 def searchDescription(request):
-    query = request.GET['search']
-    vector = SearchVector(query)
-    query = SearchQuery(query)
+    query = request.GET['query']
+    vector = SearchVector('description')
+    query2 = SearchQuery(query)
     orderList = Orders.objects.annotate(rank=SearchRank(vector, query)).order_by('-rank')
     result = iterateOrders(orderList)
     return JsonResponse({'error': False, 'data': result})
